@@ -1,0 +1,69 @@
+# Cross-module symbols of the engine port (generated from the C++ references,
+# then fixed for the modules already written). Data = C++ member name except
+# oferrari.state -> fer_state. Functions take C++ args in A, X, Y (32-bit
+# args: A = low word, X = high word, next arg in Y); oentry* args in X.
+oanimseq:
+  data: anim_ferrari, anim_pass1, anim_pass2, end_seq, ferrari_seq
+  funcs: anim_seq_intro->AnimSeqIntro, ferrari_seq->AnimFerrariSeq, flag_seq->AnimFlagSeq, init->AnimSeqInit, init_end_seq->AnimInitEndSeq, tick_end_seq->AnimTickEndSeq
+oattractai:
+  funcs: check_road_bonus->AiCheckRoadBonus, init->AiInit, set_steering_bonus->AiSetSteeringBonus, tick_ai->AiTick (tick_ai_enhanced: not classic, omit)
+obonus:
+  data: bonus_control, bonus_state, bonus_timer
+  funcs: do_bonus_text->BonusDoText, init->BonusInit
+ocrash:
+  data: coll_count1, coll_count2, crash_counter, crash_spin_count, crash_state, crash_z, skid_counter, skid_counter_bak, spin_control1, spin_control2, spr_ferrari
+  funcs: clear_crash_state->CrashClearState, enable->CrashEnable, init->CrashInit, is_flip->CrashIsFlip (-> A = 0/1), tick->CrashTick
+oferrari:
+  data: auto_brake, car_ctrl_active, car_inc_old, car_state, car_x_diff, ferrari_pal, is_slipping, rev_pitch1, rev_pitch2, rev_stop_flag, revs, revs_post_stop, spr_ferrari, spr_pass1, spr_pass2, spr_shadow, sprite_ai_counter, sprite_ai_curve, sprite_ai_steer, sprite_ai_x, sprite_car_x_bak, fer_state, wheel_state
+  funcs: check_wheels->FerCheckWheels, do_skid->FerDoSkid, do_sound_score_slip->FerDoSoundScoreSlip, draw_shadow->FerDrawShadow, init->FerInit, init_ingame->FerInitIngame, move->FerMove, reset_car->FerResetCar, set_curve_adjust->FerSetCurveAdjust, set_ferrari_bounds->FerSetBounds, set_ferrari_x->FerSetX, tick->FerTick
+oinitengine:
+  data: camera_x_off (owned by oroad.s), car_increment, car_x_old, car_x_pos, checkpoint_marker, end_stage_props, ingame_counter, ingame_engine, rd_split_state, road_curve, road_curve_next, road_remove_split, road_type, road_type_next, route_selected
+  funcs: init->IeInit, init_crash_bonus->IeInitCrashBonus, set_granular_position->IeSetGranularPosition, update_engine->IeUpdateEngine, update_road->IeUpdateRoad
+oinputs:
+  data: acc_adjust, brake_adjust, crash_input, gear, input_acc, input_steering, steering_adjust
+  funcs: adjust_inputs->InputsAdjust, do_credits->InputsDoCredits, init->InputsInit, is_analog_l/is_analog_r: digital pad, omit (always false)
+olevelobjs:
+  data: collision_sprite, spray_counter, spray_type, sprite_collision_counter
+  funcs: do_sprite_routine->LevelObjDoSpriteRoutine, hide_sprite->LevelObjHideSprite, init_hiscore_sprites->LevelObjInitHiscoreSprites, init_startline_sprites->LevelObjInitStartlineSprites, setup_sprites->LevelObjSetupSprites
+osmoke:
+  data: load_smoke_data
+  funcs: draw_ferrari_smoke->SmokeDrawFerrari, init->SmokeInit, setup_smoke_sprite->SmokeSetup
+osprites:
+  data: jump_table, no_sprites, seg_spr_addr, seg_spr_offset1, shadow_offset, spr_cnt_main, spr_cnt_shadow, sprite_count, sprite_entries, sprite_scroll_speed
+  funcs: clear_palette_data->ClearPaletteData, copy_palette_data->CopyPaletteData, disable_sprites->DisableSprites, do_spr_order_shadows->DoSprOrderShadows, init->OSpritesInit, map_palette->MapPalette, move_sprite->MoveSprite, sprite_copy->SpriteCopy, tick->OSpritesTick, update_sprites->UpdateSprites
+ostats:
+  data: credits, cur_stage, extend_play_timer, frame_counter, frame_reset, game_completed, lap_ms, route_info, routes, score, stage_counters, stage_times, time_counter
+  funcs: clear_route_info->StatsClearRouteInfo, clear_stage_times->StatsClearStageTimes, convert_speed_score->StatsConvertSpeedScore, do_timers->StatsDoTimers, init->StatsInit, init_next_level->StatsInitNextLevel, update_score->StatsUpdateScore
+otraffic:
+  data: ai_traffic, bonus_lhs, collision_mask, collision_traffic, traffic_split
+  funcs: disable_traffic->TrafficDisable, init->TrafficInit, init_stage1_traffic->TrafficInitStage1, set_max_traffic->TrafficSetMax, tick->TrafficTick, traffic_logic->TrafficLogic, traffic_sound->TrafficSound
+outrun:
+  data: freeze_timer, game_state, tick_counter, tick_frame (cannonball_mode = MODE_ORIGINAL, service_mode = false, custom_traffic = 0: constant-fold them; adr.* = the oaddr.inc constants; outputs/ttrial: not classic, omit)
+  funcs: init_best_outrunners->OutrunInitBestOutrunners
+oroad:
+  data: car_x_bak, height_lookup, height_lookup_wrk, horizon_base, horizon_set, horizon_y2, horizon_y_bak, pos_fine, road0_h, road1_h, road_ctrl, road_load_end, road_load_split, road_p0, road_pos, road_pos_change, road_width, road_width_bak, road_x, road_y, stage_lookup_off, tilemap_h_target
+  funcs: get_road_y->RoadYAt (A = z -> A = 223 - (road_y[road_p0+z] >> 4)), init->ORoadInit, tick->ORoadTick; get/set_view_mode: always VIEW_ORIGINAL (omit); road_y[road_p0 + z] -> RoadYRaw (A = z); road0_h[z] -> ldx #0 / jsr HEval (A = z); road1_h[z] -> ldx #2 / jsr HEval; road_x[z] -> RoadXRaw (A = z); other road_y indices: lda f:RDB*$10000+RD_Y,x with X = byte offset (road_p0 is a BYTE offset: word index i -> road_p0 + 2*i)
+opalette:
+  data: pal_manip_ctrl
+  funcs: cycle_sky_palette->CycleSkyPalette, fade_palette->FadePalette, init->OPalInit, setup_sky_change->SetupSkyChange, setup_sky_cycle->SetupSkyCycle; setup_sky_palette + setup_ground_color + setup_road_centre/stripes/side/colour (always called together in init) -> ONE jsr OPalSetupStage
+otiles:
+  funcs: fill_tilemap_color->FillTilemapColor (A = colour), init->OTilesInit, reset_tiles_pal->ResetTilesPal, set_scroll->SetTileScroll (A = v scroll, h = 0), set_vertical_swap->SetVerticalSwap, update_tilemaps->UpdateTilemaps (A = page), write_tilemap_hw->WriteTilemapHw; init_tilemap_palette / setup_palette_hud / setup_palette_tilemap / setup_palette_widescreen: no-ops on the SNES (omit the calls)
+ohud:
+  funcs: blit_large_digit->HudBlitLargeDigit, blit_speed->HudBlitSpeed, blit_text1->HudBlitText1, blit_text2->HudBlitText2, blit_text_big->HudBlitTextBig, blit_text_new->HudBlitTextNew, clear_timetrial_text->HudClearTimetrialText, do_mini_map->HudDoMiniMap, draw_copyright_text->HudDrawCopyrightText, draw_credits->HudDrawCredits, draw_debug_info->HudDrawDebugInfo, draw_fps_counter->HudDrawFpsCounter, draw_insert_coin->HudDrawInsertCoin, draw_lap_timer->HudDrawLapTimer, draw_main_hud->HudDrawMainHud, draw_rev_counter->HudDrawRevCounter, draw_score->HudDrawScore, draw_score_ingame->HudDrawScoreIngame, draw_score_tile->HudDrawScoreTile, draw_stage_number->HudDrawStageNumber, draw_timer1->HudDrawTimer1, draw_timer2->HudDrawTimer2, setup_mini_map->HudSetupMiniMap, translate->HudTranslate
+osoundint:
+  data: -
+  funcs: init->SndInit, queue_sound->SndQueueSound (A = command); engine_data[i] = v -> SndSetEngineData (X = i, A = v), reset->SndReset
+outils:
+  data: DEC_TO_HEX
+  funcs: bcd_add->BcdAdd (bcd_a = src, bcd_b = dst -> bcd_b = sum), bcd_sub->BcdSub (bcd_b = bcd_b - bcd_a), random->Random (-> A = low word, X = high word), reset_random_seed->ResetRandomSeed; sub16/swap32/move16/add16: inline; convert16_dechex / DEC_TO_HEX: port locally where needed
+trackloader:
+  data: current_level -> trk_level, curve_offset -> trk_curve_off, wh_offset -> trk_wh_off, scenery_offset -> trk_scenery_off, stage_data -> StageData (byte table, f:), display_start_line = true
+  funcs: init_track->TrkInitTrack (A = stage offset), init_track_bonus->TrkInitTrackBonus (A = id), init_track_split->TrkInitTrackSplit, read_curve->TrkReadCurve (A = addr -> A = word), read_width_height->TrkReadWidthHeight (A = addr -> A = word; the CALLER adds 2 to its addr), stage_offset_to_level / get_level -> TrkStageToLevel (A = offset -> A = level); init_path / init_path_split / init_path_end: no-op (the road engine loads paths from cur_stage / road_load_split / road_load_end); read8/16/32 of rom0 data -> R0Byte/R0Word/R0Long (outils)
+omusic:
+  funcs: blit->MusicBlit, check_start->MusicCheckStart, cycle_music->MusicCycleMusic, disable->MusicDisable, enable->MusicEnable, play_music->MusicPlayMusic, tick->MusicTick
+omap:
+  funcs: init->MapInit, tick->MapTick
+ologo:
+  funcs: blit->LogoBlit, disable->LogoDisable, enable->LogoEnable, tick->LogoTick
+ohiscore:
+  funcs: display_scores->HiDisplayScores, init->HiInit, init_def_scores->HiInitDefScores, setup_pal_best->HiSetupPalBest, setup_road_best->HiSetupRoadBest, tick->HiTick

@@ -1,0 +1,13 @@
+* text=auto
+/build export-ignore
+/dist export-ignore
+/roms export-ignore
+/ref export-ignore
+/release export-ignore
+/src_old export-ignore
+/.venv export-ignore
+**/__pycache__ export-ignore
+*.sfc export-ignore
+*.smc export-ignore
+*.bin export-ignore
+*.zip export-ignore

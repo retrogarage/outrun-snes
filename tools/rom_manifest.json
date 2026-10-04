@@ -1,0 +1,224 @@
+{
+  "set": "outrun",
+  "description": "Out Run (sitdown/upright, Rev B)",
+  "source": "https://github.com/mamedev/mame/blob/master/src/mame/sega/segaorun.cpp",
+  "files": [
+    {
+      "name": "epr-10187.88",
+      "size": 32768,
+      "crc32": "a10abaa9",
+      "sha1": "01c8a819587a66d2ee4d255656e36fa0904377b0",
+      "sha256": "8c007818f7060be935ae212c7e6dec0e4ba0ec8dd1732b1c5999f262ab992e6d"
+    },
+    {
+      "name": "epr-10327a.76",
+      "size": 65536,
+      "crc32": "e28a5baf",
+      "sha1": "f715bde96c73ed47035acf5a41630fdeb41bb2f9",
+      "sha256": "f50672376026758c47c4fcd59529bb4e3e5ba3911fa61127d75bab6859918bc2"
+    },
+    {
+      "name": "epr-10328a.75",
+      "size": 65536,
+      "crc32": "d5ec5e5d",
+      "sha1": "a4e3cfca4d803e72bc4fcf91ab00e21bf3f8959f",
+      "sha256": "ef48d2831e133beaa35ed2252df47d5f1b7ca383a9e73f131081d91ec7e7a626"
+    },
+    {
+      "name": "epr-10329a.58",
+      "size": 65536,
+      "crc32": "da131c81",
+      "sha1": "57d5219bd0e2fd886217e37e8773fd76be9b40eb",
+      "sha256": "d8ef3670fec29bae76075bb3a9cd4814d542f95ed599bb9a6c1bb71083bbd8c7"
+    },
+    {
+      "name": "epr-10330a.57",
+      "size": 65536,
+      "crc32": "ba9ec82a",
+      "sha1": "2136c9572e26b7ae6de402c0cd53174407cc6018",
+      "sha256": "b0be5c0e86c17bf033586eab22d3df261cede2a1370aca92ed12fc71e13411b6"
+    },
+    {
+      "name": "epr-10380b.133",
+      "size": 65536,
+      "crc32": "1f6cadad",
+      "sha1": "31e870f307f44eb4f293b607123b623beee2bc3c",
+      "sha256": "4fc0ba0ae4b996a880844e432ce82314e9058f84145ff36afa9eb51aa3bca920"
+    },
+    {
+      "name": "epr-10381b.132",
+      "size": 65536,
+      "crc32": "be8c412b",
+      "sha1": "bf3ff05bbf81bdd44567f3b9bb4919ed4a499624",
+      "sha256": "bfa129294604597f7c5145f7f0fe9bb0fe5d38fafc3a8f20b15b95f4649e7e45"
+    },
+    {
+      "name": "epr-10382b.118",
+      "size": 65536,
+      "crc32": "c4c3fa1a",
+      "sha1": "69236cf9f27691dee290c79db1fc9b5e73ea77d7",
+      "sha256": "f82740b485df5c841c3165348141f060181fd92afee8ff3419d6a6835d67a1af"
+    },
+    {
+      "name": "epr-10383b.117",
+      "size": 65536,
+      "crc32": "10a2014a",
+      "sha1": "1970895145ad8b5735f66ed8c837d9d453ce9b23",
+      "sha256": "4f3e6ef308b7314f81a0b73c4fc4e26b8ac4def840f84b2750a8b3bccec620c4"
+    },
+    {
+      "name": "mpr-10371.9",
+      "size": 131072,
+      "crc32": "7cc86208",
+      "sha1": "21320f945f7c8e990c97c9b1232a0f4b6bd00f8f",
+      "sha256": "a3b4c7982cfacb7171b151e69caa1c3e616eed8de0bd6d05a66dc0fe325c27d0"
+    },
+    {
+      "name": "mpr-10372.13",
+      "size": 131072,
+      "crc32": "b557078c",
+      "sha1": "a3746a2da077a8df4932348f650a061f413e8430",
+      "sha256": "f01a21824815783664f1aaf98f68db829a6f3b179ac76b61a73bc25d57ba6209"
+    },
+    {
+      "name": "mpr-10373.10",
+      "size": 131072,
+      "crc32": "b0d26ac9",
+      "sha1": "3a9ce8547cd43b7b04abddf9a9ab5634e0bbfaba",
+      "sha256": "c1e59b27805171724911b13711db7c1abd19acb9efce254749775c2c83f7f270"
+    },
+    {
+      "name": "mpr-10374.14",
+      "size": 131072,
+      "crc32": "8051e517",
+      "sha1": "9c8509fbed170b4ac74c169da573393e54774f49",
+      "sha256": "f2277910d9fada3336ea3861194c1325e07c294630887155755339a28bcfa1d2"
+    },
+    {
+      "name": "mpr-10375.11",
+      "size": 131072,
+      "crc32": "59b60bd7",
+      "sha1": "e5d8c67e020608edd24ba87b7687b2ac2483ee7f",
+      "sha256": "789d39fcca4f39e8f86419ec5b9ea2d8012caa7f592075dc3e1c00bf1f9ae30d"
+    },
+    {
+      "name": "mpr-10376.15",
+      "size": 131072,
+      "crc32": "f3b8f318",
+      "sha1": "a5f2532613f33a64441e0f75443c10ba78dccc6e",
+      "sha256": "2dc6fbf6383d06863d3f99a37f8535f850ecd52908c081168e76806f9ebb4c26"
+    },
+    {
+      "name": "mpr-10377.12",
+      "size": 131072,
+      "crc32": "17a1b04a",
+      "sha1": "9f7210cb4153ac9029a785dcd4b45f4513a4b008",
+      "sha256": "5820393b7229b793cb2229826895a6176cfaad66c7dc33f7e4d2b2677f4b67f0"
+    },
+    {
+      "name": "mpr-10378.16",
+      "size": 131072,
+      "crc32": "a1062984",
+      "sha1": "4399030a155caf71f2dec7f75c4b65531ab53576",
+      "sha256": "e0765ff25e9dd7e8a9ad638f329ce03a8caa2c5cfdc8162278d7ace324e39d0e"
+    },
+    {
+      "name": "opr-10185.11",
+      "size": 32768,
+      "crc32": "22794426",
+      "sha1": "a554d4b68e71861a0d0da4d031b3b811b246f082",
+      "sha256": "66c9211f41bb1c1ff3992d98155fa6ca0dd9e6612b1460a0a86d866c64ca9cfa"
+    },
+    {
+      "name": "opr-10186.47",
+      "size": 32768,
+      "crc32": "22794426",
+      "sha1": "a554d4b68e71861a0d0da4d031b3b811b246f082",
+      "sha256": "66c9211f41bb1c1ff3992d98155fa6ca0dd9e6612b1460a0a86d866c64ca9cfa"
+    },
+    {
+      "name": "opr-10188.71",
+      "size": 32768,
+      "crc32": "bad30ad9",
+      "sha1": "f70dd3a6362c314adef313b064102f7a250401c8",
+      "sha256": "03071f67b1a46fdc68264c39737b71fbfd7648f5c1d0c9977722236d2cd86116"
+    },
+    {
+      "name": "opr-10189.70",
+      "size": 32768,
+      "crc32": "01366b54",
+      "sha1": "f467a6b807694d5832a985f5381c170d24aaee4e",
+      "sha256": "be04081dd3cc8bce30c121689c16a99a69e44761ffcafba4363c00596a081a03"
+    },
+    {
+      "name": "opr-10190.69",
+      "size": 32768,
+      "crc32": "7cab70e2",
+      "sha1": "a3c581d2b438630d0d4c39481dcfd85681c9f889",
+      "sha256": "14c7e31be417c5cf172c700592a1bd705cb7b2f2bc117e5e2fbfbed0239e68c7"
+    },
+    {
+      "name": "opr-10191.68",
+      "size": 32768,
+      "crc32": "20a284ab",
+      "sha1": "7c9027416d4122791ba53782fe2230cf02b7d506",
+      "sha256": "00dbafb0d0761928753096eb22b7c66f36ad876fb8ca69def10b27032ffb9795"
+    },
+    {
+      "name": "opr-10192.67",
+      "size": 32768,
+      "crc32": "770f1270",
+      "sha1": "686bdf44d45c1d6002622f6658f037735382f3e0",
+      "sha256": "15c73de3bf08f02b1900fe0967815a520a8feac5ebf83eed154d7fdd1340444e"
+    },
+    {
+      "name": "opr-10193.66",
+      "size": 32768,
+      "crc32": "bcd10dde",
+      "sha1": "417ce1d7242884640c5b14f4db8ee57cde7d085d",
+      "sha256": "23a5620c028e85b1635958129059e27f0120630c675f2ffdb0337b629925383d"
+    },
+    {
+      "name": "opr-10230.104",
+      "size": 32768,
+      "crc32": "686f5e50",
+      "sha1": "03697b892f911177968aa40de6c5f464eb0258e7",
+      "sha256": "ca14d079471b7e6d02032c2ce265387df3ab9554b4efa74769f4defb8c5849c2"
+    },
+    {
+      "name": "opr-10231.103",
+      "size": 32768,
+      "crc32": "8908bcbf",
+      "sha1": "8e1237b640a6f26bdcbfd5e201dadb2687c4febb",
+      "sha256": "204220bcac2cd9c6ef18e5a04fdb34efb596363099e420669e5ddeb689f3ffa4"
+    },
+    {
+      "name": "opr-10232.102",
+      "size": 32768,
+      "crc32": "776ba1eb",
+      "sha1": "e3477961d19e694c97643066534a1f720e0c4327",
+      "sha256": "16794c71f30c97e9cea1d35bd96e1f03caa5751c9711e03d28e0df511c426680"
+    },
+    {
+      "name": "opr-10266.101",
+      "size": 32768,
+      "crc32": "9f6f1a74",
+      "sha1": "09164e858ebeedcff4d389524ddf89e7c216dcae",
+      "sha256": "87b6a5dc87720d7ec4bce55fb692619b84fd7b8a4ad6840f4214d3ac513bc9c1"
+    },
+    {
+      "name": "opr-10267.100",
+      "size": 32768,
+      "crc32": "a85bb823",
+      "sha1": "a7e0143dee5a47e679fd5155e58e717813912692",
+      "sha256": "736773e82afccac7fa253d0d43b13f0f23c365fbbbf860597b68e13286f3ea4f"
+    },
+    {
+      "name": "opr-10268.99",
+      "size": 32768,
+      "crc32": "95344b04",
+      "sha1": "b3480714b11fc49b449660431f85d4ba92f799ba",
+      "sha256": "086285c30b1453ab797ace7dcd7665440fa187cfc6407d391d3bb96fba9f549f"
+    }
+  ]
+}
