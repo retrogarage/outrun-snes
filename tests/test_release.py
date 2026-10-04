@@ -103,6 +103,30 @@ class ReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'not reviewed'):
             release.audit(self.root)
 
+    def test_approved_documentation_image_is_packaged(self):
+        name = 'docs/screenshots/start-line.png'
+        data = b'\x89PNG\r\n\x1a\nSYNTHETIC TEST PREVIEW'
+        path = self.root / name
+        path.parent.mkdir(parents=True)
+        path.write_bytes(data)
+        with (self.root / 'release-files.txt').open('a') as manifest:
+            manifest.write(name + '\n')
+        with patch.dict(release.DOCUMENTATION_IMAGES, {name: hashlib.sha256(data).hexdigest()}):
+            target = self.root / 'dist/source.zip'
+            release.package(release.audit(self.root), target)
+        with zipfile.ZipFile(target) as archive:
+            self.assertEqual(archive.read('outrun-snes-prototype/' + name), data)
+
+    def test_replacing_approved_image_with_other_data_is_rejected(self):
+        name = 'docs/screenshots/start-line.png'
+        path = self.root / name
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b'UNAPPROVED REPLACEMENT')
+        with (self.root / 'release-files.txt').open('a') as manifest:
+            manifest.write(name + '\n')
+        with self.assertRaisesRegex(ValueError, 'differs from approved screenshot'):
+            release.audit(self.root)
+
     def test_binary_disguised_as_source_is_rejected(self):
         (self.root / 'src/main.s').write_bytes(b'\x00\xffROM')
         with self.assertRaisesRegex(ValueError, 'Binary'):

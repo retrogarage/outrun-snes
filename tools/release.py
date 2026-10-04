@@ -11,6 +11,10 @@ IGNORED_ROOTS = {'build', 'dist', '.venv', '.git'}
 SOURCE_SUFFIXES = {'.s', '.inc', '.py', '.cpp', '.h', '.ipp', '.md', '.txt', '.json'}
 SPECIAL_FILES = {'LICENSE', 'Makefile', '.gitignore', '.gitattributes',
                  'third_party/ymfm/LICENSE'}
+# The user-approved README preview is the sole binary documentation exception.
+DOCUMENTATION_IMAGES = {
+    'docs/screenshots/start-line.png': 'fa848a76baa05f16e004a5c8d83fbdec2cd42a32eea91a27afc4bc13993ae134',
+}
 
 
 def audit(root=ROOT):
@@ -27,7 +31,8 @@ def audit(root=ROOT):
                 ':' in name or relative.as_posix() != name or
                 relative.parts[0] in IGNORED_ROOTS):
             raise ValueError(f'Unsafe release path: {name}')
-        if relative.suffix not in SOURCE_SUFFIXES and name not in SPECIAL_FILES:
+        if (relative.suffix not in SOURCE_SUFFIXES and name not in SPECIAL_FILES
+                and name not in DOCUMENTATION_IMAGES):
             raise ValueError(f'Not a permitted source file: {name}')
         if name.startswith('src/asset_') or name == 'src/scenspacing.inc':
             raise ValueError(f'Locally generated data cannot be released: {name}')
@@ -37,6 +42,11 @@ def audit(root=ROOT):
         if not path.is_file():
             raise ValueError(f'Missing release source: {name}')
         data = path.read_bytes()
+        if name in DOCUMENTATION_IMAGES:
+            if hashlib.sha256(data).hexdigest() != DOCUMENTATION_IMAGES[name]:
+                raise ValueError(f'Documentation image differs from approved screenshot: {name}')
+            files[name] = data
+            continue
         try:
             text = data.decode('utf-8')
         except UnicodeDecodeError as exc:
@@ -95,7 +105,7 @@ def main():
         if args.output.suffix.lower() != '.zip':
             raise ValueError('Source release output must have a .zip extension')
         files = audit()
-        print(f'Source audit passed: {len(files)} text files, {sum(map(len, files.values())):,} bytes.')
+        print(f'Source audit passed: {len(files)} approved files, {sum(map(len, files.values())):,} bytes.')
         if not args.check:
             checksum = package(files, args.output)
             print(f'{args.output.resolve()}\nSHA-256: {checksum}')

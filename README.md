@@ -6,8 +6,11 @@ Expect bugs, visual and audio differences, and performance limitations. Real
 hardware compatibility has not been established. Use an emulator with SA-1
 and 8 MiB ROM support; development testing has used Mesen.
 
-This is a **source-only project**. No playable ROM, arcade ROMs, music,
-samples, fonts, graphics, screenshots, save states, or converted game assets
+![OutRun SNES early prototype at the starting line](docs/screenshots/start-line.png)
+
+This is a **source-only project**, with the screenshot above included for
+documentation. No playable ROM, arcade ROMs, music, samples, extracted fonts
+or graphics, save states, or converted game assets
 are included in the source release. You supply the supported arcade ROM set
 locally; the tools extract and convert its assets and build the SNES ROM on
 your computer. There is no game-asset downloader and no bundled MAME binary.
@@ -81,14 +84,16 @@ python tools/release.py
 
 Only files explicitly listed in `release-files.txt` are packaged into
 `dist/outrun-snes-prototype-source.zip`, with a SHA-256 sidecar. The packager
-rejects missing files, symlinks, binary content, unsafe paths, and unexpected
-files in the source directories. When run in a Git repository, it also
+rejects missing files, symlinks, unapproved binary content, unsafe paths, and
+unexpected files in the source directories. The README screenshot is the
+only image exception, approved by its exact path and checksum.
+When run in a Git repository, it also
 rejects tracked files outside the allowlist. Review changes to the allowlist
 before adding new files. `.gitignore` and `.gitattributes` provide additional
 protection; they do not erase files from an existing Git history.
 
 Publish the generated **source ZIP only**. Do not attach your working tree,
-`build/`, ROMs, generated assembly/data, media, traces, or old release folders.
+`build/`, ROMs, generated assembly/data, other media, traces, or old release folders.
 There is deliberately no ROM, binary patch, or downloadable game-asset release.
 This audit covers the present source tree; it is not a legal clearance opinion.
 
@@ -103,7 +108,7 @@ and noncommercial/source-disclosure conditions are retained in `LICENSE` and
 `THIRD_PARTY.md` for the separately licensed library and data provenance.
 
 Release verification: a clean build from the source ZIP and a locally supplied
-MAME ZIP reproduced the previously tested ROM byte-for-byte. The 13 synthetic
+MAME ZIP reproduced the previously tested ROM byte-for-byte. The 15 synthetic
 input/packaging tests and Mesen console/race smoke checks passed. This checks
 build reproducibility and basic operation, not complete game correctness.
 

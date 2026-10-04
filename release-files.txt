@@ -10,6 +10,7 @@ docs/port.md
 docs/port_agents.md
 docs/port_registry.txt
 docs/renderer.md
+docs/screenshots/start-line.png
 licenses/CannonBall.txt
 release-files.txt
 requirements.txt
